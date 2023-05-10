@@ -5,7 +5,8 @@ const pug = require('pug');
 const _ = require('lodash');
 const path = require('path');
 
-const {Donor} = require('./models/donor')
+const {Donor} = require('./models/donor');
+const { log } = require('console');
 const {initializePayment, verifyPayment} = require('./config/paystack')(request);
 
 const port = process.env.PORT || 3000;
@@ -121,8 +122,32 @@ app.get('/receipt/:id', (req, res)=>{
     })
 })
 
+app.post('/add', (req,res)=>{
+
+})
+
 app.get('/error', (req, res)=>{
     res.render('error.pug');
+})
+
+
+const donor = new Donor({
+    full_name: "Almuhandis",
+    email: "Almuhandis.com",
+    amount: 200,
+    reference: "dst5srsqfts",
+    regno: "nas/ste/19/1023",
+    level: "400",
+    course: "software",
+    phone: "0373663662"
+})
+
+donor.save((err,res) => {
+    if(!err){
+        console.log("Success")
+    }else{
+        console.log(err)
+    }
 })
 
 app.listen(port, () => {
