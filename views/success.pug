@@ -38,9 +38,21 @@ block content
             | Level: #{donor.level} (#{new Date().getFullYear() - donor.level + 1} - #{new Date().getFullYear() - donor.level + 2})
           hr
           .br
+          img#qrcode(src='data:image/png;base64,#{generateQRCode(donor.reference)}')
+          .br
           button(type='button', onclick='window.print()') Print
   footer
     block content
       footer.d-flex.justify-content-center.text-white.pt-5
         p &copy; 2023 MSSN AUK <br/>
         span(style='color: grey; font-size: 14px;')  &nbsp;  &nbsp;   By Northino LTD
+
+script.
+  function generateQRCode(reference) {
+    var qr = new QRCode(document.createElement('div'), {
+      text: reference,
+      width: 128,
+      height: 128,
+    });
+    return qr.toDataURL();
+  }

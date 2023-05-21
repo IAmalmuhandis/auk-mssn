@@ -122,9 +122,6 @@ app.get('/receipt/:id', (req, res)=>{
     })
 })
 
-app.post('/add', (req,res)=>{
-
-})
 
 app.get('/error', (req, res)=>{
     res.render('error.pug');
