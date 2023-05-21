@@ -1,37 +1,46 @@
 extends layout
+
 block content
-    main
-        .row.justify-content-center
-            .col-lg-6.container3.p-3
-                .container.p-5
-                    h5
-                        | PAYMENT RECEIPT (2022/2023 SESSION)
-                    hr
-                    .br
-                    .br
-                    h5
-                        | Reference: #{donor.reference} 
-                    hr
-                    .br
-                    h5
-                        | Name: #{donor.full_name} 
-                    hr
-                    .br
-                    h5
-                        | Amount: NGN #{donor.amount/100} 
-                    hr 
-                    .br
-                    h5
-                        | Registration Number: #{donor.regno}
-                    hr
-                    .br
-                    h5
-                        | Phone Number: #{donor.phone} 
-                    hr
-                    .br
-                    h5
-                        | Programme of Study: #{donor.course}
-                    hr
-                    .br
-                    h5
-                        | Level: #{donor.level}  
+  main
+    .row.justify-content-center
+      .col-lg-6.container3.p-3
+        .container.p-5
+          h5
+            | PAYMENT RECEIPT (#{new Date().getFullYear()}/#{new Date().getFullYear() + 1} SESSION)
+          hr
+          .br
+          .br
+          h5
+            | Reference: #{donor.reference} 
+          hr
+          .br
+          h5
+            | Name: #{donor.full_name} 
+          hr
+          .br
+          h5
+            | Amount: NGN #{donor.amount/100} 
+          hr 
+          .br
+          h5
+            | Registration Number: #{donor.regno}
+          hr
+          .br
+          h5
+            | Phone Number: #{donor.phone} 
+          hr
+          .br
+          h5
+            | Programme of Study: #{donor.course}
+          hr
+          .br
+          h5
+            | Level: #{donor.level} (#{new Date().getFullYear() - donor.level + 1} - #{new Date().getFullYear() - donor.level + 2})
+          hr
+          .br
+          button(type='button', onclick='window.print()') Print
+  footer
+    block content
+      footer.d-flex.justify-content-center.text-white.pt-5
+        p &copy; 2023 MSSN AUK <br/>
+        span(style='color: grey; font-size: 14px;')  &nbsp;  &nbsp;   By Northino LTD
